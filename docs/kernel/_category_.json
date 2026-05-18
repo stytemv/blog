@@ -1,0 +1,8 @@
+{
+  "label": "Linux Kernel",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "kernel/index"
+  }
+}

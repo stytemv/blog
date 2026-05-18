@@ -1,0 +1,8 @@
+{
+  "label": "사용",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "실행 중 page가 사용되는 방식과 동작"
+  }
+}

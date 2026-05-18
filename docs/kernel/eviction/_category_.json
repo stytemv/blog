@@ -1,0 +1,8 @@
+{
+  "label": "제거",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "page mapping 제거와 free 상태 반환 단계"
+  }
+}

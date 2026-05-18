@@ -1,0 +1,8 @@
+{
+  "label": "메모리 모델",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Linux memory management의 기본 구조와 메모리 단위"
+  }
+}

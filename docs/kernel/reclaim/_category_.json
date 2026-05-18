@@ -1,0 +1,8 @@
+{
+  "label": "회수",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "memory pressure에서 free memory를 확보하는 회수 계층"
+  }
+}

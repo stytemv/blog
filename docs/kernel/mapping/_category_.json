@@ -1,0 +1,8 @@
+{
+  "label": "연결",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "page와 address space 사이의 mapping 계층"
+  }
+}

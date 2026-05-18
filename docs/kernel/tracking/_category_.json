@@ -1,0 +1,8 @@
+{
+  "label": "추적",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "page 상태와 참조/mapping 관계를 추적하는 관리 계층"
+  }
+}

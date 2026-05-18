@@ -1,0 +1,8 @@
+{
+  "label": "생성",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "physical page를 확보하는 allocation 계층"
+  }
+}

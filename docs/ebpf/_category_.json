@@ -1,0 +1,8 @@
+{
+  "label": "eBPF",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "ebpf/index"
+  }
+}
