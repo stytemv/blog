@@ -1,8 +1,0 @@
-{
-  "label": "Executable and Linkable Format",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "리눅스 실행 파일 형식인 ELF의 구조와 로딩 과정을 정리합니다."
-  }
-}

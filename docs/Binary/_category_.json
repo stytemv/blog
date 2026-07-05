@@ -1,0 +1,8 @@
+{
+  "label": "Binary",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "실행 파일과 바이너리 분석에 필요한 개념을 공부합니다."
+  }
+}
