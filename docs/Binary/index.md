@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Overview"
+sidebar_label: "Binary"
 sidebar_position: 1
 ---
 

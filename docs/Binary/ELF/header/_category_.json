@@ -1,0 +1,8 @@
+{
+  "label": "Executable header",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "ELF 파일의 형식과 구조를 식별하기 위한 메타데이터. \n Elf64_Ehdr 구조체에 관한 공부"
+  }
+}

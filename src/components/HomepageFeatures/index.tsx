@@ -36,12 +36,10 @@ const FeatureList: FeatureItem[] = [
     description: <>개인 프로젝트를 기록한 아카이브입니다.</>,
   },
   {
-    title: "ELF 파일 분석",
+    title: "Binary",
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-    to: "/docs/executable-and-linkable-format/",
-    description: (
-      <>리눅스 실행 파일 형식인 ELF의 구조와 로딩 과정을 정리합니다.</>
-    ),
+    to: "/docs/Binary/",
+    description: <>바이너리 파일의 구조, 로딩 과정에 대해 공부합니다.</>,
   },
   {
     title: "Compiler",
