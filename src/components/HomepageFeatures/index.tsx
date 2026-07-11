@@ -41,12 +41,6 @@ const FeatureList: FeatureItem[] = [
     to: "/docs/Binary/",
     description: <>바이너리 파일의 구조, 로딩 과정에 대해 공부합니다.</>,
   },
-  {
-    title: "Compiler",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
-    to: "/docs/compiler/",
-    description: <>Compiler 공부 기록입니다.</>,
-  },
 ];
 
 function Feature({ title, Svg, description, to }: FeatureItem) {
