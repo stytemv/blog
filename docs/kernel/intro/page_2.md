@@ -113,13 +113,13 @@ folio는 “하나 이상의 연속된 page를 표현하는 메모리 관리 단
 
 등에서 compound page와 base page를 보다 일관된 방식으로 처리하기 위한 상위 abstraction에 가깝습니다.
 
-실제 내부적으로 folio 역시 struct page 기반 위에서 동작합니다. 다만 기존의 “이 page가 compound인가?”를 반복적으로 검사하는 방식 대신, 처음부터 folio 단위로 동작하게 함으로써 page cache 및 memory management 경로를 단순화하려는 목적을 가집니다.
+실제 내부적으로 folio 역시 struct page 기반 위에서 동작합니다. 다만 기존의 "이 page가 compound인가?"를 반복적으로 검사하는 방식 대신, 처음부터 folio 단위로 동작하게 함으로써 page cache 및 memory management 경로를 단순화하려는 목적을 가집니다.
 
 기존 커널에서는 compound page를 다룰 때, 전달받은 struct page가 head page인지 tail page인지 직접 확인해야 하는 경우가 많았습니다.
 
 예를 들어 THP(Transparent Huge Page) 환경에서는 함수가 tail page를 전달받을 수도 있었기 때문에, 실제 compound page 전체를 다루기 위해 먼저 head page를 찾아야 했습니다.
 
-이를 위해 커널은 compound_head() 같은 helper를 사용했습니다.
+이를 위해 커널은 compound_head() 같은 함수를 사용했습니다.
 
 tail page의 compound_head 필드에는 자신이 속한 head page 주소가 저장되어 있으며, bit 0은 tail page 여부를 나타내는 플래그로 사용됩니다. 따라서 compound_head()는 이 값을 통해 현재 page가 tail page인지 확인하고, 실제 head page 주소를 복원하는 역할을 수행했습니다.
 

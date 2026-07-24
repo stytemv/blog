@@ -5,11 +5,6 @@ sidebar_position: 1
 
 # node
 
-<div align="center">
-  <img src="/img/linux_memory/numa/numa.png" width="700"/>
-  <p><em>Figure 1. NUMA architecture overview</em></p>
-</div>
-
 초기의 컴퓨터 시스템에서는 하나의 CPU 패키지(socket) 안에 여러 개의 CPU 코어(core)가 존재하고, 이 코어들이 하나의 메모리 공간(RAM)을 공유하는 구조가 일반적이었습니다. 이러한 구조에서는 어떤 코어가 메모리에 접근하더라도 접근 비용이 거의 동일했으며, 이를 UMA(Uniform Memory Access) 구조라고 부릅니다.
 
 예를 들어 같은 CPU 소켓 내부에 존재하는:
