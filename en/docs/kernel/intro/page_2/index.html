@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.1">
 <title data-rh="true">page (2) | stytem Dev</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://stytemv.github.io/blog/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://stytemv.github.io/blog/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://stytemv.github.io/blog/en/docs/kernel/intro/page_2"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="ko"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="page (2) | stytem Dev"><meta data-rh="true" name="description" content="일반적인 page는 x86_64 기준 4KB 단위의 base page로 관리됩니다. 하지만 커널은 항상 4KB 단위로만 메모리를 사용하는 것은 아닙니다. 경우에 따라 여러 개의 page를 하나의 큰 page처럼 묶어 관리할 필요가 있으며"><meta data-rh="true" property="og:description" content="일반적인 page는 x86_64 기준 4KB 단위의 base page로 관리됩니다. 하지만 커널은 항상 4KB 단위로만 메모리를 사용하는 것은 아닙니다. 경우에 따라 여러 개의 page를 하나의 큰 page처럼 묶어 관리할 필요가 있으며"><link data-rh="true" rel="icon" href="/blog/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stytemv.github.io/blog/en/docs/kernel/intro/page_2"><link data-rh="true" rel="alternate" href="https://stytemv.github.io/blog/docs/kernel/intro/page_2" hreflang="ko"><link data-rh="true" rel="alternate" href="https://stytemv.github.io/blog/en/docs/kernel/intro/page_2" hreflang="en"><link data-rh="true" rel="alternate" href="https://stytemv.github.io/blog/docs/kernel/intro/page_2" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Linux Kernel","item":"https://stytemv.github.io/blog/en/docs/kernel/"},{"@type":"ListItem","position":2,"name":"메모리 모델","item":"https://stytemv.github.io/blog/en/docs/category/메모리-모델"},{"@type":"ListItem","position":3,"name":"page(2)","item":"https://stytemv.github.io/blog/en/docs/kernel/intro/page_2"}]}</script><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/blog/en/assets/css/styles.d8d80cc5.css">
-<script src="/blog/en/assets/js/runtime~main.8b019648.js" defer="defer"></script>
+<script src="/blog/en/assets/js/runtime~main.54284ee5.js" defer="defer"></script>
 <script src="/blog/en/assets/js/main.ca520e4e.js" defer="defer"></script>
 </head>
 <body>
@@ -37,10 +37,10 @@
 <li class="">file-backed memory</li>
 </ul>
 <p>등에서 compound page와 base page를 보다 일관된 방식으로 처리하기 위한 상위 abstraction에 가깝습니다.</p>
-<p>실제 내부적으로 folio 역시 struct page 기반 위에서 동작합니다. 다만 기존의 “이 page가 compound인가?”를 반복적으로 검사하는 방식 대신, 처음부터 folio 단위로 동작하게 함으로써 page cache 및 memory management 경로를 단순화하려는 목적을 가집니다.</p>
+<p>실제 내부적으로 folio 역시 struct page 기반 위에서 동작합니다. 다만 기존의 &quot;이 page가 compound인가?&quot;를 반복적으로 검사하는 방식 대신, 처음부터 folio 단위로 동작하게 함으로써 page cache 및 memory management 경로를 단순화하려는 목적을 가집니다.</p>
 <p>기존 커널에서는 compound page를 다룰 때, 전달받은 struct page가 head page인지 tail page인지 직접 확인해야 하는 경우가 많았습니다.</p>
 <p>예를 들어 THP(Transparent Huge Page) 환경에서는 함수가 tail page를 전달받을 수도 있었기 때문에, 실제 compound page 전체를 다루기 위해 먼저 head page를 찾아야 했습니다.</p>
-<p>이를 위해 커널은 compound_head() 같은 helper를 사용했습니다.</p>
+<p>이를 위해 커널은 compound_head() 같은 함수를 사용했습니다.</p>
 <p>tail page의 compound_head 필드에는 자신이 속한 head page 주소가 저장되어 있으며, bit 0은 tail page 여부를 나타내는 플래그로 사용됩니다. 따라서 compound_head()는 이 값을 통해 현재 page가 tail page인지 확인하고, 실제 head page 주소를 복원하는 역할을 수행했습니다.</p>
 <p>문제는 이러한 과정이 page cache, reclaim, writeback 등 다양한 memory management 경로 전체에 반복적으로 등장했다는 점입니다. 즉 커널 내부에는:</p>
 <ul>
